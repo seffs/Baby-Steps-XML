@@ -1,0 +1,221 @@
+ <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+<!--_-_-_-_-_-_-_-_-_-_KERNELEMENTE-_-_-_-_-_-_-_-_-_-_-_-_-->
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="UNTERNEHMENSNAME" type="xs:string"/>
+  
+  <xs:element name="ANREDE" type="xs:string"/>
+  <xs:element name="KUNDENNAME" type="xs:string"/>
+  
+  <xs:element name="ADDRESSE" type="xs:string"/>
+  <xs:element name="TELEFONNUMMER1" type="xs:string"/>
+  <xs:element name="TELEFONNUMMER2" type="xs:string"/>
+  <xs:element name="EMAIL" type="xs:string"/>
+  
+  <xs:element name="PLZ_ORT">
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+		<xs:pattern value="([A-Z]{2}-)?[0-9]{4,7} [A-Z][a-z]+([- /][A-Z]?[a-z]+)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+  </xs:element> 
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="ANZAHL" type="xs:string"/>
+  <xs:element name="POSITION" type="xs:int"/>
+  <xs:element name="LDATUM" type="xs:date"/>
+  <xs:element name="BESCHREIBUNG" type="xs:string"/>
+  <xs:element name="EINZELPREIS" type="xs:decimal"/>
+  <xs:element name="GESAMTPREIS" type="xs:decimal"/>
+  <xs:element name="WAEHRUNG" type="xs:string"/>
+  <xs:element name="EINHEIT" type="xs:string"/>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="STEUERNUMMER" type="xs:string"/>
+  <xs:element name="UST-ID" type="xs:string"/>
+  <xs:element name="AUSTELLUNGSDATUM" type="xs:date"/>
+  <xs:element name="DOKUMENTENNUMMER" type="xs:string"/>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+  
+  <xs:element name="NETTO" type="xs:decimal"/>
+  <xs:element name="MWST-GESAMT" type="xs:decimal"/>
+  <xs:element name="BRUTTO" type="xs:decimal"/>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+	<xs:element name="KONTO-INHABER" type="xs:string"/>
+	<xs:element name="BANK" type="xs:string"/>
+	<xs:element name="IBAN">
+		<xs:simpleType>
+				<xs:restriction base="xs:string">
+	 				<xs:pattern value="[A-Z0-9]{4}"/>
+				</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
+	<xs:element name="BLZ">
+		<xs:simpleType>
+				<xs:restriction base="xs:int">
+	 				<xs:pattern value="[0-9]{8}"/>
+				</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
+	<xs:element name="KONTO-NR">
+		<xs:simpleType>
+				<xs:restriction base="xs:int">
+	 				 <xs:pattern value="[0-9]{8,10}"/>
+				</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
+	<xs:element name="BIC">
+		<xs:simpleType>
+				<xs:restriction base="xs:string">
+	 				 <xs:maxLength value="11"/>
+				</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
+	<xs:element name="BITCOIN" type="xs:string"/>
+	<xs:element name="BAR" type="xs:string"/>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+<!--_-_-_-_-_-_-_-_-_-_-_-_STRUKTUR-_-_-_-_-_-_-_-_-_-_-_-_-->
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+ 
+  <xs:element name="UNTERNEHMENDATEN">
+    <xs:complexType>
+      <xs:sequence>
+      	<xs:element ref="ANREDE" minOccurs="0"/>
+        <xs:element ref="UNTERNEHMENSNAME"/>
+        <xs:element ref="ADDRESSE"/>
+        <xs:element ref="PLZ_ORT"/>
+        <xs:element ref="TELEFONNUMMER1" minOccurs="0"/>
+        <xs:element ref="TELEFONNUMMER2" minOccurs="0"/>
+        <xs:element ref="EMAIL" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="KUNDEDATEN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ANREDE"/>
+        <xs:element ref="KUNDENNAME"/>
+        <xs:element ref="ADDRESSE"/>
+        <xs:element ref="PLZ_ORT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="MENGE">
+  	<xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ANZAHL"/>  
+        <xs:element ref="EINHEIT" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ITEM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="POSITION"/>
+        <xs:element ref="LDATUM"/>
+        <xs:element ref="MENGE" minOccurs="0"/>
+        <xs:element ref="BESCHREIBUNG"/>
+        <xs:element ref="EINZELPREIS" minOccurs="0"/>
+        <xs:element ref="GESAMTPREIS"/>
+        <xs:element ref="WAEHRUNG"/>
+      </xs:sequence>
+      <xs:attribute type="xs:int" name="mehrwertsteuer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="LEISTUNG">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ITEM" maxOccurs="unbounded" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+  
+  <xs:element name="ENTGELT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="NETTO"/>
+        <xs:element ref="MWST-GESAMT"/>
+        <xs:element ref="BRUTTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="KONTO">
+  	<xs:complexType>
+  		<xs:sequence>
+  			<xs:element ref="KONTO-INHABER" minOccurs="0"/>
+  			<xs:element ref="BANK" minOccurs="0"/>
+  			<xs:element ref="IBAN" minOccurs="0"/>
+  			<xs:element ref="BLZ" minOccurs="0"/>
+  			<xs:element ref="KONTO-NR"/>
+  			<xs:element ref="BIC" minOccurs="0"/>
+  		</xs:sequence>	
+  	</xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="ZAHLUNGSART">
+  	<xs:complexType>
+  		<xs:sequence>
+  			<xs:element ref="KONTO"   minOccurs="0" maxOccurs="unbounded"/>
+  			<xs:element ref="BITCOIN" minOccurs="0"/>
+  			<xs:element ref="BAR" minOccurs="0"/>
+  		</xs:sequence>	
+  	</xs:complexType>
+  </xs:element>
+
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="RECHNUNG">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="UNTERNEHMENDATEN"/>
+        <xs:element ref="KUNDEDATEN"/>
+        <xs:choice>
+	    	<xs:element ref="STEUERNUMMER"/>
+	    	<xs:element ref="UST-ID"/>
+	    </xs:choice>
+        <xs:element ref="AUSTELLUNGSDATUM"/>
+        <xs:element ref="DOKUMENTENNUMMER"/>
+        <xs:element ref="LEISTUNG"/>
+        <xs:element ref="ENTGELT"/>
+        <xs:element ref="ZAHLUNGSART"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+<!--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-->
+
+  <xs:element name="RECHNUNGEN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="RECHNUNG" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>
