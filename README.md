@@ -1,2 +1,2 @@
 # Baby-Steps-XML
-Experimental manipulation with XSL, XPaths &amp; (Un)Marshlling
+Fiddeling around with XSL, XPaths & (Un)Marshlling 
